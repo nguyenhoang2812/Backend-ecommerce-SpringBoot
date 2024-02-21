@@ -1,8 +1,4 @@
 
-https://github.com/tranthuyvy/Ecommerce_website_backend.git
-
-                                                                           HOME CONTROLLER
-
 http://localhost:8080/
 -------------------------------------------------------------
 
