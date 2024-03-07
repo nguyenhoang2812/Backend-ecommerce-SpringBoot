@@ -56,12 +56,12 @@ http://localhost:8080/api/admin/products/creates
 🙃️xóa sản phầm 
 http://localhost:8080/api/admin/products/1/delete
 
-vấn đề : không xóa được trong csdl, chỉ đánh dấu là sản phẩm ngừng bán
+không xóa trong csdl, chỉ đánh dấu là sản phẩm ngừng bán
 ---------------------------------------------------
 🤩️update sản phẩm
 http://localhost:8080/api/admin/products/1/update
 
-vấn đề: chưa update được trường sizes
+
 ----------------------------------------------------
 
                                                                            REVIEW CONTROLLER 
