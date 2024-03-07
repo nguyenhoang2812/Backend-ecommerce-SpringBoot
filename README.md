@@ -6,28 +6,10 @@ http://localhost:8080/
 
 register: http://localhost:8080/auth/signup
 
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "john.doe@example.com",
-  "password": "password123",
-  "mobile": "123456789",
-  "points": 0,
-  "user_rank": "BRONZE"
-}
-
 
 
 --------------------------------------------
 login:  http://localhost:8080/auth/signin
-
-{
-  "email"   :"mio@gmail.com",
-  "password":"password123"
-}
-
-gen token: eyJhbGciOiJIUzM4NCJ9.eyJpYXQiOjE3MDc5MjE0NjAsImV4cCI6MTcwODAwNzg2MCwiZW1haWwiOiJtaW9AZ21haWwuY29tIn0.Vd1Vh4zgjPOkuPJqnZHMwEMl_sYCI-Nl0b-ZqEcaIGHJhyINTZpYhMD08rYnybto 
-
 
                                                                            USER CONTROLLER
 
@@ -48,15 +30,6 @@ get profile: http://localhost:8080/api/users/profile
 
 put profile: http://localhost:8080/api/users/profile  
 
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "john.doe@example.com",
-  "mobile": "123456789",
-  "points": 400
-}
-rank dựa vào số point
-
 -----------------------------------------------
                                                                            USER PRODUCT CONTROLLER
 😜️lấy thông tin sản phẩm theo brand  
@@ -75,61 +48,9 @@ http://localhost:8080/api/products/search?q=áo
 😉️thêm 1 sản phẩm
 http://localhost:8080/api/admin/products/
 
-{
-  "id":4,
-  "title": "Áo khoác nam",
-  "description": "Áo khoác nam màu xanh đậm, kiểu dáng thời trang",
-  "price": 300000,
-  "discountedPrice": 270000,
-  "discountPersent": 10,
-  "quantity": 30,
-  "brand": "Adidas",
-  "color": "Navy Blue",
-  "sizes": ["M", "L", "XL"],
-  "imageUrl": "https://example.com/ao-khoac-nam.jpg",
-  "topLavelCategory": "Danh mục cấp 1",
-  "secondLavelCategory": "Danh mục cấp 2.2",
-  "thirdLavelCategory": "Danh mục cấp 3.3"
-}
 
 🙃️thêm nhiều sản phầm
 http://localhost:8080/api/admin/products/creates
-
-[
-  {
-    "title": "Áo len nam",
-    "description": "Áo len nam màu xám, kiểu dáng thời trang",
-    "price": 500000,
-    "discountedPrice": 400000,
-    "discountPersent": 20,
-    "quantity": 30,
-    "brand": "H&M",
-    "color": "Grey",
-    "sizes": ["S", "M", "L"],
-    "imageUrl": "https://example.com/ao-len-nam.jpg",
-    "topLavelCategory": "Thời trang nam",
-    "secondLavelCategory": "Áo len",
-    "thirdLavelCategory": "Áo len dài tay"
-  },
-  {
-    "title": "Váy dài nữ",
-    "description": "Váy dài nữ màu đen, kiểu dáng thanh lịch",
-    "price": 700000,
-    "discountedPrice": 600000,
-    "discountPersent": 14,
-    "quantity": 20,
-    "brand": "Zara",
-    "color": "Black",
-    "sizes": ["XS", "S", "M"],
-    "imageUrl": "https://example.com/vay-dai-nu.jpg",
-    "topLavelCategory": "Thời trang nữ",
-    "secondLavelCategory": "Váy",
-    "thirdLavelCategory": "Váy dài"
-  }
-]
-
-
-
 
 ---------------------------------------------------
 🙃️xóa sản phầm 
@@ -164,12 +85,6 @@ http://localhost:8080/api/cart/
 😉️thêm sản phẩm vào giỏ hàng của người dùng (PUT)
 http://localhost:8080/api/cart/add                                                  
 
-{
-  "productId": 54,
-  "size": "M",
-  "quantity": 3
-}
-
 😚️xóa sạch mọi sản phẩm trong giỏ  hàng
 http://localhost:8080/api/cart/clear
 
@@ -182,19 +97,7 @@ http://localhost:8080/api/cart_items/4
 ☺️update 1 sản phẩm trong giỏ hàng 
 
 http://localhost:8080/api/cart_items/6
-{
-  "cart": {
-    "id": 1
-  },
-  "product": {
-    "id": 54
-  },
-  "size": "M",
-  "quantity": 5,
-  "price": 500000,
-  "discountedPrice": 400000,
-  "userId": 1
-}
+
 ----------------------------------------------------
                                                                            ORDER CONTROLLER
 
@@ -216,29 +119,30 @@ http://localhost:8080/api/orders/cancelled
 😋️lấy thông tin order đã giao dịch thành công 
 http://localhost:8080/api/orders/success
 
-😘️add sản phẩm vào order
+😘️add địa chỉ giao hàng vào order
 http://localhost:8080/api/orders/
-{
-  "user": {
-    "id": 1
-  },
-  "shippingAddress": {
-    "street": "456 Elm St",
-    "city": "City",
-    "state": "State",
-    "country": "Country",
-    "zipcode": "12345"
-  },
-  "orderItems": [
-    {
-      "product": {
-        "id": 2    
-        },
-      "quantity":1
-    }
-  ]
-}
 
+----------------------------------------------------
+                                                                           ADMIN ORDER CONTROLLER
+                                                                                                                                                      
+http://localhost:8080/api/admin/orders/9/confirmed 
+
+ship
+deliver      
+cancel
+success  
+delete 
+update-payment-status 
+
+-----------------------------------------------------                                                                                                                                           
+                                                                           PAYMENT CONTROLLER 
+                                                                           
+create payment section                                                                                                                               
+http://localhost:8080/api/payments/19
+/payments/{orderId}
+
+123456789
+mio@gmail.com
 
 
 ----------------------------------------------------
