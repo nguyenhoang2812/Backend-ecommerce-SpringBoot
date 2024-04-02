@@ -128,7 +128,7 @@ http://localhost:8080/api/orders/
 http://localhost:8080/api/admin/orders/9/confirmed 
 
 ship
-deliver      
+delivery for order        
 cancel
 success  
 delete 
