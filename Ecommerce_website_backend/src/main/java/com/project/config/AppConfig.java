@@ -21,15 +21,23 @@ public class AppConfig {
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+		//STATELESS : server  sẽ không lưu trữ trạng thái xác thực người dùng
+		//Thay vào đó jwt sẽ mang đầy đủ thông tin để xác thực câng thiết mỗi request
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
 		.authorizeHttpRequests(Authorize -> Authorize
+
+				//chỉ yêu cầu /api/** mới cần xác thực
 				.requestMatchers("/api/**").authenticated()
 				.anyRequest().permitAll()
 				)
 		.addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
+
 		.csrf().disable()
+
+				//Cross-Origin Resource Sharing  : cho phép nguồn khác dùng tài nguyên
 		.cors().configurationSource(new CorsConfigurationSource() {
 					
 					@Override

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.project.user.domain.Rank;
+import com.project.user.domain.UserRole;
 import org.springframework.stereotype.Service;
 
 import com.project.config.JwtTokenProvider;
@@ -75,15 +76,17 @@ public class UserServiceImplementation implements UserService {
 			currentUser.setMobile(updatedUser.getMobile());
 		}
 
+		if(updatedUser.getRole() != null){
+			currentUser.setRole(UserRole.ROLE_USER);
+		}
+
+
 
 		if (!currentUser.getEmail().equals(updatedUser.getEmail())) {
 
 			User existingUserWithEmail = userRepository.findByEmail(updatedUser.getEmail());
 			if (existingUserWithEmail != null) {
 				throw new UserException("Email đã tồn tại");
-			}
-			if (updatedUser.getEmail() != null) {
-				currentUser.setEmail(updatedUser.getEmail());
 			}
 		}
 

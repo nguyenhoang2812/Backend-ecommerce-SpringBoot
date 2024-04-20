@@ -16,13 +16,22 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobleException {
 	
+//	@ExceptionHandler(UserException.class)
+//	public ResponseEntity<ErrorDetails> UserExceptionHandler(UserException ue, WebRequest req){
+//
+//		ErrorDetails err = new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
+//
+//		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+//	}
+
 	@ExceptionHandler(UserException.class)
-	public ResponseEntity<ErrorDetails> UserExceptionHandler(UserException ue, WebRequest req){
-		
-		ErrorDetails err = new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
-		
-		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ErrorDetails> UserExceptionHandler(UserException ue , WebRequest req){
+
+		ErrorDetails err = new ErrorDetails(ue.getMessage(), req.getDescription(false), LocalDateTime.now());
+
+		return  new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
+
 	
 	@ExceptionHandler(ProductException.class)
 	public ResponseEntity<ErrorDetails> ProductExceptionHandler(ProductException ue, WebRequest req){
